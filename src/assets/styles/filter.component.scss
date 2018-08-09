@@ -1,0 +1,75 @@
+.filter-block {
+  background-color: #ffffff;
+  border-radius: .4rem;
+  box-shadow: 0 0 10px rgba(228, 235, 241, 1.5);
+  margin: .3rem;
+  padding: .7rem 0 .7rem 0;
+
+  &__currency {
+    @include flex-direction(row);
+    @include display-flex;
+    background-color: #ffffff;
+    border-radius: .4rem;
+    box-shadow: 0 0 10px rgba(228, 235, 241, 1.5);
+    border: solid 1px #d2d5d6;
+    margin: .7rem;
+  }
+
+  &__item {
+    color: #2196f3;
+    margin: .8rem 1rem .7rem 1rem;
+    margin: 0;
+    padding: .8rem 1rem .7rem 1rem;
+    font: .9rem sans-serif;
+  }
+
+  &__item:hover {
+    background-color: #f2fcff;
+    border: solid 1px #2196f3;
+  }
+
+  &__item:active {
+    background-color: #2196f3;
+    color: #ffffff;
+  }
+
+  &__input-checkbox {
+    display: none;
+    width: 15px;
+    height: 15px;
+    border: solid 1px #d2d5d6;
+    background-color: white;
+  }
+
+  &__label::before {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    border-radius: .2rem;
+    border: solid 1px #d2d5d6;
+    margin: 0 .5rem 0 0;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  &__input-checkbox:checked + label::before {
+    border: solid 1px #2196f3;
+    content: "✓";
+    color: #2196f3;
+    font: 1rem sans-serif;
+    text-align: center;
+  }
+
+  &__check:hover {
+    background-color: #f1fcff;
+  }
+
+  &__check:hover:after {
+    position: relative;
+    left: 2rem;
+    vertical-align: middle;
+    content: "ТОЛЬКО";
+    color: #2196f3;
+  }
+}

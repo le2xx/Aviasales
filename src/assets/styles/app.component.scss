@@ -1,0 +1,30 @@
+.aviasales {
+  @include display-flex;
+  @include flex-direction(column);
+
+  .header {
+    .logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .content-block {
+    @include display-flex;
+    @include flex-direction(row);
+
+    .tickets-block {
+      @include display-flex;
+      @include flex-direction(column);
+
+      .ticket {
+        background-color: #ffffff;
+        border-radius: .4rem;
+        box-shadow: 0 0 10px rgba(228,235,241,1.5);
+        margin: .3rem;
+        padding: .3rem;
+      }
+    }
+  }
+}
