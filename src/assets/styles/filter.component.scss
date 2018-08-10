@@ -8,19 +8,24 @@
   &__currency {
     @include flex-direction(row);
     @include display-flex;
-    background-color: #ffffff;
-    border-radius: .4rem;
-    box-shadow: 0 0 10px rgba(228, 235, 241, 1.5);
-    border: solid 1px #d2d5d6;
     margin: .7rem;
   }
 
   &__item {
     color: #2196f3;
-    margin: .8rem 1rem .7rem 1rem;
-    margin: 0;
     padding: .8rem 1rem .7rem 1rem;
     font: .9rem sans-serif;
+    border: solid 1px #d2d5d6;
+
+    &_left {
+      border-radius: .4rem 0 0 .4rem;
+      border-right-style: none;
+    }
+
+    &_right {
+      border-radius: 0 .4rem .4rem 0;
+      border-left-style: none;
+    }
   }
 
   &__item:hover {
