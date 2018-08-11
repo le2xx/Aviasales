@@ -4,11 +4,13 @@
   box-shadow: 0 0 10px rgba(228, 235, 241, 1.5);
   margin: .3rem;
   padding: .7rem 0 .7rem 0;
+  height: fit-content;
 
   &__currency {
     @include flex-direction(row);
     @include display-flex;
     margin: .7rem;
+    height: auto;
   }
 
   &__item {

@@ -1,0 +1,84 @@
+.ticket {
+  @include display-flex;
+  @include flex-direction(row);
+  background-color: #ffffff;
+  border-radius: .4rem;
+  box-shadow: 0 0 10px rgba(228,235,241,1.5);
+  margin: .3rem;
+  
+
+  .button-block {
+    border-right-color: #eceff1;
+    border-right-style: solid;
+    border-right-width: 1px;
+    
+
+    &__img {
+      display: block;
+      margin: 1.5rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__buy {
+      width: 10rem;
+      height: 4rem;
+      border-radius: .3rem;
+      background-color: #ff6d00;
+      margin: 1rem;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #ff8124;
+      }
+    }
+
+    &__text {
+      text-align: center;
+      padding: 0.7rem 0 0 0;
+      font-weight:bold
+    }
+  }
+
+  .info-block {
+    &__item {
+      @include display-flex;
+      @include flex-direction(row);
+    }
+
+    &__child1 {
+      flex: 1 1 0px;
+    }
+
+    &__child2 {
+      flex: 1 1 0px;
+      text-align: right;
+    }
+  
+    &__time {
+      margin: 1.3rem 1.3rem 0 1.3rem;
+      font-size: 2rem;
+      color: #4a4a4a;
+    }
+
+    &__transfer {
+      padding: 1.6rem 0 0 0;
+      color: #9ca4a6;
+    }
+
+    &__point {
+      margin: .5rem 1.3rem .3rem 1.3rem;
+      padding: 0;
+      font-weight:bold;
+      color: #4a4a4a;
+    }
+
+    &__date {
+      margin: 0 1.3rem 0 1.3rem;
+      padding: 0;
+      color: #9aa2a5;
+    }
+  }
+}
