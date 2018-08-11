@@ -30,5 +30,11 @@ p {
   display: flex;
 }
 
-@import "./app.component";
-@import "./filter.component";
+@mixin hover-item {
+  background-color: #f2fcff;
+  border: solid 1px #2196f3;
+}
+
+@import "app.component";
+@import "filter.component";
+@import "ticket.component";
