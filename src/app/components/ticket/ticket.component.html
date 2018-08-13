@@ -3,25 +3,25 @@
     <img class="button-block__img" src="../assets/images/airline.png">
     <div class="button-block__buy">
       <p class="button-block__text">Купить</p>
-      <p class="button-block__text">{{ ticket.price }} p</p>
+      <p class="button-block__text">за {{ ticket.price }} ₽</p>
     </div>
   </div>
   <div class="info-block">
     <div class="info-block__item">
       <div class="info-block__time">{{ ticket.departure_time }}</div>
       <div class="info-block__transfer">
-        <div>{{ ticket.stops }} {{ ticket.stops === 1 ? 'ПЕРЕСАДКА' : '' }}</div>
+        <div>{{ ticket.stops }} {{ stops[ticket.stops] }}</div>
         <img src="../assets/images/airplan.png">
       </div>
       <div class="info-block__time">{{ ticket.arrival_time }}</div>
     </div>
     <div class="info-block__item">
       <div class="info-block__child1">
-        <p class="info-block__point">{{ ticket.origin }} {{ ticket.origin_name }}</p>
-        <p class="info-block__date">{{ ticket.departure_date }}</p>
+        <p class="info-block__point">{{ ticket.origin }}, {{ ticket.origin_name }}</p>
+        <p class="info-block__date">{{ dateTransform(ticket.departure_date) }}</p>
       </div>
       <div class="info-block__child2">
-        <p class="info-block__point">{{ ticket.destination_name }} {{ ticket.destination }}</p>
+        <p class="info-block__point">{{ ticket.destination_name }}, {{ ticket.destination }}</p>
         <p class="info-block__date">{{ ticket.arrival_date }}</p>
       </div>
     </div>
