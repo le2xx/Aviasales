@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 // @ts-ignore
 import json from '../assets/json/tickets.json';
 
@@ -8,5 +8,8 @@ import json from '../assets/json/tickets.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  data: object = json.tickets;
+  tickets: any = json.tickets.slice();
+  get data(): object {
+    return this.tickets.sort((a, b) => a.price - b.price);
+  }
 }
