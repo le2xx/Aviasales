@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output } from '@angular/core';
+// @ts-ignore
+import json from '../assets/json/tickets.json';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Aviasales';
+  data: object = json.tickets;
 }

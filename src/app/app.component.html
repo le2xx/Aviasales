@@ -5,9 +5,7 @@
   <div class="content-block">
     <app-filter class="filter-block"></app-filter>
     <div class="tickets-block">
-      <app-ticket></app-ticket>
-      <app-ticket></app-ticket>
-      <app-ticket></app-ticket>
+      <app-ticket *ngFor="let ticket of data" [ticket]=ticket></app-ticket>
     </div>
   </div>
 </div>

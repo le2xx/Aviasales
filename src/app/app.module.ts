@@ -1,15 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { FilterComponent } from './components/filter/filter.component';
-import { TicketComponent } from './components/ticket/ticket.component';
+import {AppComponent} from './app.component';
+import {FilterComponent} from './components/filter/filter.component';
+import {TicketComponent} from './components/ticket/ticket.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterComponent,
-    TicketComponent
+    TicketComponent,
   ],
   imports: [
     BrowserModule
@@ -17,4 +18,5 @@ import { TicketComponent } from './components/ticket/ticket.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
