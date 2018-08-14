@@ -1,34 +1,34 @@
 <p>ВАЛЮТА</p>
 <div class="filter-block__currency">
-  <div class="filter-block__item filter-block__item_left" type="button" (click)="checkCurency('RUB')">RUB</div>
-  <div class="filter-block__item filter-block__item_center" type="button" (click)="checkCurency('USD')">USD</div>
-  <div class="filter-block__item filter-block__item_right" type="button" (click)="checkCurency('EUR')">EUR</div>
+  <div class="filter-block__item filter-block__item_left" type="button" (click)="checkCurrency('RUB')">RUB</div>
+  <div class="filter-block__item filter-block__item_center" type="button" (click)="checkCurrency('USD')">USD</div>
+  <div class="filter-block__item filter-block__item_right" type="button" (click)="checkCurrency('EUR')">EUR</div>
 </div>
 <br>
 <p>КОЛИЧЕСТВО ПЕРЕСАДОК</p>
 <p class="filter-block__check">
   <input class="filter-block__input-checkbox" type="checkbox" id="all" (click)="filterStops('all')"
-         [checked]="filterStatus.all">
+         [checked]="filterStatus.all.status">
   <label class="filter-block__label" for="all">Все</label>
 </p>
 <p class="filter-block__check">
   <input class="filter-block__input-checkbox" type="checkbox" id="no" (click)="filterStops('no')"
-         [checked]="filterStatus.no">
+         [checked]="filterStatus.no.status">
   <label class="filter-block__label" for="no">Без пересадок</label>
 </p>
 <p class="filter-block__check">
   <input class="filter-block__input-checkbox" type="checkbox" id="one" (click)="filterStops('one')"
-         [checked]="filterStatus.one">
+         [checked]="filterStatus.one.status">
   <label class="filter-block__label" for="one">1 пересадка</label>
 </p>
 <p class="filter-block__check">
   <input class="filter-block__input-checkbox" type="checkbox" id="two" (click)="filterStops('two')"
-         [checked]="filterStatus.two">
+         [checked]="filterStatus.two.status">
   <label class="filter-block__label" for="two">2 пересадки</label>
 </p>
 <p class="filter-block__check">
   <input class="filter-block__input-checkbox" type="checkbox" id="tree" (click)="filterStops('tree')"
-         [checked]="filterStatus.tree">
+         [checked]="filterStatus.tree.status">
   <label class="filter-block__label" for="tree">3 пересадки</label>
 </p>
 

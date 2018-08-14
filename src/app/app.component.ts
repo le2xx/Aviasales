@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // @ts-ignore
 import json from '../assets/json/tickets.json';
 
@@ -7,9 +7,19 @@ import json from '../assets/json/tickets.json';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   tickets: any = json.tickets.slice();
-  get data(): object {
-    return this.tickets.sort((a, b) => a.price - b.price);
+  data: object;
+
+  ngOnInit() {
+    this.dataInit();
+  }
+
+  filteredData(newData: any) {
+    this.data = newData;
+  }
+
+  dataInit() {
+    this.data = this.tickets.sort((a, b) => a.price - b.price);
   }
 }

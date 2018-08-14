@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -7,26 +7,56 @@ import {Component, OnInit} from '@angular/core';
 })
 export class FilterComponent implements OnInit {
   filterStatus: object = {
-    all: false,
-    no: false,
-    one: false,
-    two: false,
-    tree: false
+    all: {status: false, filterColl: item => item, data: []},
+    no: {status: false, filterColl: item => item.stops === 0, data: []},
+    one: {status: false, filterColl: item => item.stops === 1, data: []},
+    two: {status: false, filterColl: item => item.stops === 2, data: []},
+    tree: {status: false, filterColl: item => item.stops === 3, data: []}
   };
+
+  @Input() data: any;
+  noFilterData: any;
+  @Output() filteredData = new EventEmitter<any>();
 
   constructor() {
   }
 
   ngOnInit() {
+    this.etalonData();
   }
 
-  checkCurency(curency: string) {
-    console.log(curency);
+  etalonData() {
+    this.noFilterData = this.data.slice();
+  }
+
+  checkCurrency(currency: string) {
+    this.filteredData.emit([]);
+    // console.log(currency);
   }
 
   filterStops(stop: string) {
-    this.filterStatus[stop] = !this.filterStatus[stop];
-    console.log(this.filterStatus);
+    let result: any;
+    this.filterStatus[stop].status = !this.filterStatus[stop].status;
+
+    if (!this.filterStatus[stop].status) {
+      this.filterStatus[stop].data = [];
+    } else {
+      this.filterStatus[stop].data = this.noFilterData.filter(this.filterStatus[stop].filterColl);
+    }
+
+    if (stop === 'all') {
+      return this.filteredData.emit(this.noFilterData);
+    }
+
+    result = [].concat(this.filterStatus['all'].data, this.filterStatus['no'].data, this.filterStatus['one'].data,
+      this.filterStatus['two'].data, this.filterStatus['tree'].data);
+
+    if (result.length === 0) {
+      result = this.noFilterData;
+    }
+
+    this.filteredData.emit(result.sort((a, b) => a.price - b.price));
   }
+
 
 }
