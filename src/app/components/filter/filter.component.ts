@@ -30,21 +30,21 @@ export class FilterComponent implements OnInit {
   }
 
   checkCurrency(currency: string) {
-    this.filteredData.emit([]);
-    // console.log(currency);
+    // this.filteredData.emit([]);
+    console.log(currency);
   }
 
   filterStops(stop: string) {
     let result: any;
     this.filterStatus[stop].status = !this.filterStatus[stop].status;
 
-    if (!this.filterStatus[stop].status) {
-      this.filterStatus[stop].data = [];
-    } else {
+    if (this.filterStatus[stop].status) {
       this.filterStatus[stop].data = this.noFilterData.filter(this.filterStatus[stop].filterColl);
+    } else {
+      this.filterStatus[stop].data = [];
     }
 
-    if (stop === 'all') {
+    if (this.filterStatus['all'].status) {
       return this.filteredData.emit(this.noFilterData);
     }
 
