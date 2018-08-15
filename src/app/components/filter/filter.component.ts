@@ -6,11 +6,11 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-  currencyStatus: object = {
-    rub: {status: true, date: 1},
-    usd: {status: false, date: null},
-    eur: {status: false, date: null},
-  };
+  currencyStatus = [
+    {name: 'rub', status: true, date: 1},
+    {name: 'usd', status: false, date: null},
+    {name: 'eur', status: false, date: null}
+  ];
 
   filterStatus: object = {
     all: {status: false, filterColl: item => item, data: []},
@@ -36,7 +36,8 @@ export class FilterComponent implements OnInit {
   }
 
   checkCurrency(currency: string) {
-    this.currencyStatus[currency].status = !this.currencyStatus[currency].status;
+    this.currencyStatus.map(item =>
+      item.name === currency ? item.status = true : item.status = false);
     console.log(this.currencyStatus);
   }
 
@@ -63,6 +64,4 @@ export class FilterComponent implements OnInit {
 
     this.filteredData.emit(result.sort((a, b) => a.price - b.price));
   }
-
-
 }

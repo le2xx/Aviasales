@@ -30,5 +30,4 @@ export class TicketComponent implements OnInit {
     const arr = price.splice(3, 0, ' ');
     return price.reverse().join('');
   }
-
 }

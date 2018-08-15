@@ -1,13 +1,13 @@
 <p>ВАЛЮТА</p>
 <div class="filter-block__currency">
   <input class="filter-block__currency-item" type="radio" id="rub" name="currency" (click)="checkCurrency('rub')"
-         [checked]="currencyStatus.rub.status">
+         [checked]="currencyStatus[0].status">
   <label class="filter-block__currency-left" for="rub"></label>
   <input class="filter-block__currency-item" type="radio" id="usd" name="currency" (click)="checkCurrency('usd')"
-         [checked]="currencyStatus['usd'].status">
+         [checked]="currencyStatus[1].status">
   <label class="filter-block__currency-center" for="usd"></label>
   <input class="filter-block__currency-item" type="radio" id="eur" name="currency" (click)="checkCurrency('eur')"
-         [checked]="currencyStatus['eur'].status">
+         [checked]="currencyStatus[2].status">
   <label class="filter-block__currency-right" for="eur"></label>
 </div>
 <br>
@@ -37,4 +37,3 @@
          [checked]="filterStatus.tree.status">
   <label class="filter-block__label" for="tree">3 пересадки</label>
 </p>
-
