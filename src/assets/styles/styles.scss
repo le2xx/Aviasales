@@ -1,6 +1,11 @@
+html {
+  overflow-y: scroll;
+  -ms-overflow-y: scroll;
+}
+
 body {
   background-color: #f3f7fa;
-  font: .7rem  sans-serif;
+  font: .7rem Arial, sans-serif;
   color: #4a4a4a;
 }
 
@@ -33,6 +38,23 @@ p {
 @mixin hover-item {
   background-color: #f2fcff;
   border: solid 1px #2196f3;
+}
+
+@mixin cheked-item {
+  background-color: #2196f3;
+  color: #ffffff;
+}
+
+@mixin currency-label {
+  display: inline-block;
+  height: 2rem;
+  width: 3.6rem;
+  border: solid 1px #d2d5d6;
+  position: relative;
+  font: .8rem Arial, sans-serif;
+  text-align: center;
+  color: #2196f3;
+  line-height: 2rem;
 }
 
 @import "app.component";
