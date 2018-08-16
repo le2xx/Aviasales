@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-filter',
@@ -6,10 +7,12 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
+  urlCurrency = 'https://www.cbr-xml-daily.ru/daily_json.js';
+
   currencyStatus = [
-    {name: 'rub', status: true, date: 1},
-    {name: 'usd', status: false, date: null},
-    {name: 'eur', status: false, date: null}
+    {name: 'rub', symbol: '₽', status: true, date: 1},
+    {name: 'usd', symbol: '$', status: false, date: null},
+    {name: 'eur', symbol: '€', status: false, date: null}
   ];
 
   filterStatus: object = {
@@ -20,25 +23,35 @@ export class FilterComponent implements OnInit {
     tree: {status: false, filterColl: item => item.stops === 3, data: []}
   };
 
-  @Input() data: any;
   noFilterData: any;
+  @Input() data: any;
   @Output() filteredData = new EventEmitter<any>();
+  @Output() currency = new EventEmitter<any>();
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
-    this.etalonData();
+    this.noModifiedData();
+    this.getCurrencyData();
   }
 
-  etalonData() {
+  getCurrencyData() {
+    this.http.get(this.urlCurrency).subscribe(date => this.addCurrencyStatus(date));
+  }
+
+  addCurrencyStatus(date) {
+    this.currencyStatus[1].date = date['Valute'].USD.Value;
+    this.currencyStatus[2].date = date['Valute'].EUR.Value;
+  }
+
+  noModifiedData() {
     this.noFilterData = this.data.slice();
   }
 
   checkCurrency(currency: string) {
-    this.currencyStatus.map(item =>
-      item.name === currency ? item.status = true : item.status = false);
-    console.log(this.currencyStatus);
+    this.currencyStatus.map((item) => item.name === currency ? item.status = true : item.status = false);
+    this.currency.emit(this.currencyStatus.find(item => item.status));
   }
 
   filterStops(stop: string) {

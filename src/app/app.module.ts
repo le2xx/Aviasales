@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FilterComponent} from './components/filter/filter.component';
 import {TicketComponent} from './components/ticket/ticket.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {TicketComponent} from './components/ticket/ticket.component';
     TicketComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

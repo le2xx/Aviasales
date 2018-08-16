@@ -10,6 +10,7 @@ import json from '../assets/json/tickets.json';
 export class AppComponent implements OnInit {
   tickets: any = json.tickets.slice();
   data: object;
+  currency: any = {name: 'rub', symbol: '₽', status: true, date: 1};
 
   ngOnInit() {
     this.dataInit();
@@ -17,6 +18,10 @@ export class AppComponent implements OnInit {
 
   filteredData(newData: any) {
     this.data = newData;
+  }
+
+  newCurrencyData(newCurrency: string) {
+    this.currency = newCurrency;
   }
 
   dataInit() {

@@ -10,6 +10,7 @@ export class TicketComponent implements OnInit {
   stops: any = ['ПЕРЕСАДОК', 'ПЕРЕСАДКА', 'ПЕРЕСАДКИ', 'ПЕРЕСАДКИ'];
   months: any = ['', 'янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
   week: any = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+  @Input() currency;
 
   constructor() {
   }
@@ -25,7 +26,8 @@ export class TicketComponent implements OnInit {
     return `${day} ${this.months[month]} 20${year}, ${this.week[dayWeek]}`;
   }
 
-  priceTransform(date: number) {
+  priceTransform(input: number) {
+    const date = Math.round((input / this.currency.date) * 100) / 100;
     const price = String(date).split('').reverse();
     const arr = price.splice(3, 0, ' ');
     return price.reverse().join('');
