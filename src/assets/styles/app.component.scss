@@ -2,12 +2,13 @@
   @include display-flex;
   @include flex-direction(column);
 
-  .header {
-    .logo {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  .logo {
+    background-image: url(../images/logo.png);
+    display: block;
+    height: 81px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 76px;
   }
 
   .content-block {

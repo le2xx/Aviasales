@@ -8,27 +8,25 @@
   
 
   .button-block {
-    border-right-color: #eceff1;
-    border-right-style: solid;
-    border-right-width: 1px;
-    
+    border-right: 1px solid #eceff1;
 
     &__img {
+      background-image: url(../images/airline.png);
       display: block;
-      margin: 1.5rem;
-      margin-left: auto;
-      margin-right: auto;
+      height: 34px;
+      margin: 1.5rem auto;
+      width: 120px;
     }
 
     &__buy {
-      width: 10rem;
-      height: 4rem;
-      border-radius: .3rem;
       background-color: #ff6d00;
-      margin: 1rem;
+      border-radius: .3rem;
       color: #ffffff;
       font-size: 1rem;
       font-weight: bold;
+      height: 4rem;
+      margin: 1rem;
+      width: 10rem;
 
       &:hover {
         background-color: #ff8124;
@@ -37,9 +35,9 @@
     }
 
     &__text {
-      text-align: center;
+      font-weight:bold;
       padding: 0.7rem 0 0 0;
-      font-weight:bold
+      text-align: center;
     }
   }
 
@@ -50,36 +48,43 @@
     }
 
     &__child1 {
-      flex: 1 1 0px;
+      flex: 1 1 0;
     }
 
     &__child2 {
-      flex: 1 1 0px;
+      flex: 1 1 0;
       text-align: right;
     }
   
     &__time {
-      margin: 1.3rem 1.3rem 0 1.3rem;
-      font-size: 2rem;
       color: #4a4a4a;
+      font-size: 2rem;
+      margin: 1.3rem 1.3rem 0 1.3rem;
     }
 
     &__transfer {
-      padding: 1.6rem 0 0 0;
       color: #9ca4a6;
+      padding: 1.6rem 0 0 0;
+    }
+
+    &__airplan {
+      background-image: url(../images/airplan.png);
+      display: block;
+      height: 14px;
+      width: 112px;
     }
 
     &__point {
+      color: #4a4a4a;
+      font-weight:bold;
       margin: .5rem 1.3rem .3rem 1.3rem;
       padding: 0;
-      font-weight:bold;
-      color: #4a4a4a;
     }
 
     &__date {
+      color: #9aa2a5;
       margin: 0 1.3rem 0 1.3rem;
       padding: 0;
-      color: #9aa2a5;
     }
   }
 }

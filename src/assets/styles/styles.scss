@@ -5,34 +5,34 @@ html {
 
 body {
   background-color: #f3f7fa;
-  font: .7rem Arial, sans-serif;
   color: #4a4a4a;
+  font: .7rem Arial, sans-serif;
 }
 
 p {
-  margin: 0rem;
+  margin: 0;
   padding: .4rem .7rem .4rem .7rem;
   position: relative;
 }
 
 @mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
   border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
 }
 
 @mixin flex-direction($direction) {
-  -webkit-flex-direction: $direction;
-  -ms-flex-direction: $direction;
   flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  -webkit-flex-direction: $direction;
 }
 
 @mixin display-flex {
-  display: -webkit-flex;
+  display: flex;
   display: -moz-flex;
   display: -ms-flex;
   display: -o-flex;
-  display: flex;
+  display: -webkit-flex;
 }
 
 @mixin hover-item {
@@ -46,15 +46,16 @@ p {
 }
 
 @mixin currency-label {
-  display: inline-block;
-  height: 2rem;
-  width: 3.6rem;
   border: solid 1px #d2d5d6;
-  position: relative;
-  font: .8rem Arial, sans-serif;
-  text-align: center;
   color: #2196f3;
+  cursor: pointer;
+  display: inline-block;
+  font: .8rem Arial, sans-serif;
+  height: 2rem;
   line-height: 2rem;
+  position: relative;
+  text-align: center;
+  width: 3.6rem;
 }
 
 @import "app.component";
