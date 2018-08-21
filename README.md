@@ -9,7 +9,7 @@
 логика переключения валют. Кстати курсы валют беруться с ([api центробанка](https://www.cbr-xml-daily.ru/))
 
 ## Run
-``bash
+```bash
 git clone https://github.com/le2xx/Aviasales.git
 cd Aviasales
 npm i
