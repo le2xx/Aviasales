@@ -1,14 +1,14 @@
 <p>ВАЛЮТА</p>
 <div class="filter-block__currency">
-  <input class="filter-block__currency-item" type="radio" id="rub" name="currency" (click)="checkCurrency('rub')"
-         [checked]="currencyStatus[0].status">
-  <label class="filter-block__currency-left" for="rub"></label>
-  <input class="filter-block__currency-item" type="radio" id="usd" name="currency" (click)="checkCurrency('usd')"
-         [checked]="currencyStatus[1].status">
-  <label class="filter-block__currency-center" for="usd"></label>
-  <input class="filter-block__currency-item" type="radio" id="eur" name="currency" (click)="checkCurrency('eur')"
-         [checked]="currencyStatus[2].status">
-  <label class="filter-block__currency-right" for="eur"></label>
+  <input class="filter-block__currency-input" type="radio" id="rub" name="currency" (click)="checkCurrency('rub')"
+         [checked]="currencyStatus.rub.status">
+  <label class="filter-block__currency-item filter-block__currency-item_left" for="rub"></label>
+  <input class="filter-block__currency-input" type="radio" id="usd" name="currency" (click)="checkCurrency('usd')"
+         [checked]="currencyStatus.usd.status">
+  <label class="filter-block__currency-item filter-block__currency-item_center" for="usd"></label>
+  <input class="filter-block__currency-input" type="radio" id="eur" name="currency" (click)="checkCurrency('eur')"
+         [checked]="currencyStatus.eur.status">
+  <label class="filter-block__currency-item filter-block__currency-item_right" for="eur"></label>
 </div>
 <br>
 <p>КОЛИЧЕСТВО ПЕРЕСАДОК</p>

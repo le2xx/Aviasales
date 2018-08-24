@@ -3,7 +3,7 @@
     <div class="button-block__img"></div>
     <div class="button-block__buy">
       <p class="button-block__text">Купить</p>
-      <p class="button-block__text">за {{ priceTransform(ticket.price) }} {{ currency.symbol }}</p>
+      <p class="button-block__text">за {{ ticket.price | priceTransform:currency.date }} {{ currency.symbol }}</p>
     </div>
   </div>
   <div class="info-block">
@@ -11,18 +11,18 @@
       <div class="info-block__time">{{ ticket.departure_time }}</div>
       <div class="info-block__transfer">
         <div>{{ ticket.stops }} {{ stops[ticket.stops] }}</div>
-        <div class="info-block__airplan"></div>
+        <div class="info-block__airplane"></div>
       </div>
       <div class="info-block__time">{{ ticket.arrival_time }}</div>
     </div>
     <div class="info-block__item">
-      <div class="info-block__child1">
+      <div class="info-block__departure">
         <p class="info-block__point">{{ ticket.origin }}, {{ ticket.origin_name }}</p>
-        <p class="info-block__date">{{ dateTransform(ticket.departure_date) }}</p>
+        <p class="info-block__date">{{ ticket.departure_date | dateTransform }}</p>
       </div>
-      <div class="info-block__child2">
+      <div class="info-block__destination">
         <p class="info-block__point">{{ ticket.destination_name }}, {{ ticket.destination }}</p>
-        <p class="info-block__date">{{ dateTransform(ticket.arrival_date) }}</p>
+        <p class="info-block__date">{{ ticket.arrival_date | dateTransform }}</p>
       </div>
     </div>
   </div>

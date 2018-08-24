@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 // @ts-ignore
-import json from '../assets/json/tickets.json';
+import json from './common/json/tickets.json';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,9 @@ import json from '../assets/json/tickets.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  tickets: any = json.tickets.slice();
+  tickets = json.tickets.slice();
   data: object;
-  currency: any = {name: 'rub', symbol: '₽', status: true, date: 1};
+  currency = {symbol: '₽', status: true, date: 1};
 
   ngOnInit() {
     this.dataInit();
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.data = newData;
   }
 
-  newCurrencyData(newCurrency: string) {
+  newCurrencyData(newCurrency: any) {
     this.currency = newCurrency;
   }
 

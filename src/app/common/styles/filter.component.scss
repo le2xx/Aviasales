@@ -13,7 +13,7 @@
     margin: .7rem;
   }
 
-  &__currency-item {
+  &__currency-input {
     display: none;
 
     &:checked + *[class^='filter-block__currency-'] {
@@ -21,52 +21,62 @@
     }
   }
 
-  &__currency-left {
-    @include currency-label;
-    border-radius: .4rem 0 0 .4rem;
-    border-right-style: none;
+  &__currency-item {
+    border: solid 1px #d2d5d6;
+    color: #2196f3;
+    cursor: pointer;
+    display: inline-block;
+    font: .8rem Arial, sans-serif;
+    height: 2rem;
+    line-height: 2rem;
+    position: relative;
+    text-align: center;
+    width: 3.6rem;
 
-    &::before {
-      content: "RUB";
+    &_left {
+      border-radius: .4rem 0 0 .4rem;
+      border-right-style: none;
+
+      &::before {
+        content: "RUB";
+      }
+
+      &:hover {
+        @include hover-item;
+      }
+
+      &:hover ~ .filter-block__currency-item_center {
+        border-left-style: none;
+      }
     }
 
-    &:hover {
-      @include hover-item;
+    &_center {
+      border-right-style: none;
+
+      &::before {
+        content: "USD";
+        margin-top: 10px;
+      }
+
+      &:hover {
+        @include hover-item;
+      }
+
+      &:hover ~ .filter-block__currency-item_right {
+        border-left-style: none;
+      }
     }
 
-    &:hover ~ .filter-block__currency-center {
-      border-left-style: none;
-    }
-  }
+    &_right {
+      border-radius: 0 .4rem .4rem 0;
 
-  &__currency-center {
-    @include currency-label;
-    border-right-style: none;
+      &::before {
+        content: "EUR";
+      }
 
-    &::before {
-      content: "USD";
-      margin-top: 10px;
-    }
-
-    &:hover {
-      @include hover-item;
-    }
-
-    &:hover ~ .filter-block__currency-right {
-      border-left-style: none;
-    }
-  }
-
-  &__currency-right {
-    @include currency-label;
-    border-radius: 0 .4rem .4rem 0;
-
-    &::before {
-      content: "EUR";
-    }
-
-    &:hover {
-      @include hover-item;
+      &:hover {
+        @include hover-item;
+      }
     }
   }
 
@@ -78,14 +88,11 @@
     width: 15px;
   }
 
-  &__label {
-    cursor: pointer;
-  }
-
   &__label::before {
     border: solid 1px #d2d5d6;
     border-radius: .2rem;
     content: "";
+    cursor: pointer;
     display: inline-block;
     height: 1rem;
     margin: 0 .5rem 0 0;

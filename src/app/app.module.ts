@@ -5,6 +5,8 @@ import {AppComponent} from './app.component';
 import {FilterComponent} from './components/filter/filter.component';
 import {TicketComponent} from './components/ticket/ticket.component';
 import {HttpClientModule} from '@angular/common/http';
+import {DateTransformPipe} from './common/pipes/date-transform.pipe';
+import {PriceTransformPipe} from './common/pipes/price-transform.pipe';
 
 
 @NgModule({
@@ -12,6 +14,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     FilterComponent,
     TicketComponent,
+    DateTransformPipe,
+    PriceTransformPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,89 @@
+.ticket {
+  @include display-flex;
+  @include flex-direction(row);
+  background-color: #ffffff;
+  border-radius: .4rem;
+  box-shadow: 0 0 10px rgba(228, 235, 241, 1.5);
+  margin: .3rem;
+}
+
+.button-block {
+  border-right: 1px solid #eceff1;
+
+  &__img {
+    background-image: url(../../../assets/images/airline.png);
+    display: block;
+    height: 34px;
+    margin: 1.5rem auto;
+    width: 120px;
+  }
+
+  &__buy {
+    background-color: #ff6d00;
+    border-radius: .3rem;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 4rem;
+    margin: 1rem;
+    width: 10rem;
+
+    &:hover {
+      background-color: #ff8124;
+      cursor: pointer;
+    }
+  }
+
+  &__text {
+    font-weight: bold;
+    padding: 0.7rem 0 0 0;
+    text-align: center;
+  }
+}
+
+.info-block {
+  &__item {
+    @include display-flex;
+    @include flex-direction(row);
+  }
+
+  &__departure {
+    flex: 1 1 0;
+  }
+
+  &__destination {
+    flex: 1 1 0;
+    text-align: right;
+  }
+
+  &__time {
+    color: #4a4a4a;
+    font-size: 2rem;
+    margin: 1.3rem 1.3rem 0 1.3rem;
+  }
+
+  &__transfer {
+    color: #9ca4a6;
+    padding: 1.6rem 0 0 0;
+  }
+
+  &__airplane {
+    background-image: url(../../../assets/images/airplan.png);
+    display: block;
+    height: 14px;
+    width: 112px;
+  }
+
+  &__point {
+    color: #4a4a4a;
+    font-weight: bold;
+    margin: .5rem 1.3rem .3rem 1.3rem;
+    padding: 0;
+  }
+
+  &__date {
+    color: #9aa2a5;
+    margin: 0 1.3rem 0 1.3rem;
+    padding: 0;
+  }
+}

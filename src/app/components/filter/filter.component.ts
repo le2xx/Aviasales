@@ -9,11 +9,11 @@ import {HttpClient} from '@angular/common/http';
 export class FilterComponent implements OnInit {
   urlCurrency = 'https://www.cbr-xml-daily.ru/daily_json.js';
 
-  currencyStatus = [
-    {name: 'rub', symbol: '₽', status: true, date: 1},
-    {name: 'usd', symbol: '$', status: false, date: null},
-    {name: 'eur', symbol: '€', status: false, date: null}
-  ];
+  currencyStatus = {
+    rub: {symbol: '₽', status: true, date: 1},
+    usd: {symbol: '$', status: false, date: null},
+    eur: {symbol: '€', status: false, date: null}
+  };
 
   filterStatus: object = {
     all: {status: false, filterColl: item => item, data: []},
@@ -41,8 +41,8 @@ export class FilterComponent implements OnInit {
   }
 
   addCurrencyStatus(date) {
-    this.currencyStatus[1].date = date['Valute'].USD.Value;
-    this.currencyStatus[2].date = date['Valute'].EUR.Value;
+    this.currencyStatus.usd.date = date['Valute'].USD.Value;
+    this.currencyStatus.eur.date = date['Valute'].EUR.Value;
   }
 
   noModifiedData() {
@@ -50,8 +50,25 @@ export class FilterComponent implements OnInit {
   }
 
   checkCurrency(currency: string) {
-    this.currencyStatus.map((item) => item.name === currency ? item.status = true : item.status = false);
-    this.currency.emit(this.currencyStatus.find(item => item.status));
+    switch (currency) {
+      case 'rub':
+        this.currencyStatus.rub.status = true;
+        this.currencyStatus.usd.status = false;
+        this.currencyStatus.eur.status = false;
+        break;
+      case 'usd':
+        this.currencyStatus.rub.status = false;
+        this.currencyStatus.usd.status = true;
+        this.currencyStatus.eur.status = false;
+        break;
+      case 'eur':
+        this.currencyStatus.rub.status = false;
+        this.currencyStatus.usd.status = false;
+        this.currencyStatus.eur.status = true;
+        break;
+      default:
+    }
+    this.currency.emit(this.currencyStatus[currency]);
   }
 
   filterStops(stop: string) {

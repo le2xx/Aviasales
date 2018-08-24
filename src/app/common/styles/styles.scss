@@ -45,19 +45,9 @@ p {
   color: #ffffff;
 }
 
-@mixin currency-label {
-  border: solid 1px #d2d5d6;
-  color: #2196f3;
-  cursor: pointer;
-  display: inline-block;
-  font: .8rem Arial, sans-serif;
-  height: 2rem;
-  line-height: 2rem;
-  position: relative;
-  text-align: center;
-  width: 3.6rem;
-}
-
-@import "app.component";
-@import "filter.component";
-@import "ticket.component";
+// @import "app.component";
+// @import "filter.component";
+// @import "ticket.component";
+@import "~src/app/common/styles/app.component";
+@import "~src/app/common/styles/filter.component";
+@import "~src/app/common/styles/ticket.component";
