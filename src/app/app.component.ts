@@ -8,19 +8,19 @@ import json from './common/json/tickets.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  tickets = json.tickets.slice();
-  data: object;
-  currency = {symbol: '₽', status: true, date: 1};
+  tickets: any[] = json.tickets.slice();
+  data: object = null;
+  currency: object = {symbol: '₽', status: true, date: 1};
 
   ngOnInit() {
     this.dataInit();
   }
 
-  filteredData(newData: any) {
+  filteredData(newData: object) {
     this.data = newData;
   }
 
-  newCurrencyData(newCurrency: any) {
+  newCurrencyData(newCurrency: object) {
     this.currency = newCurrency;
   }
 

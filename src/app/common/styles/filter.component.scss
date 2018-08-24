@@ -16,8 +16,9 @@
   &__currency-input {
     display: none;
 
-    &:checked + *[class^='filter-block__currency-'] {
-      @include cheked-item;
+    &:checked + .filter-block__currency-item {
+      background-color: #2196f3;
+      color: #ffffff;
     }
   }
 
@@ -33,16 +34,17 @@
     text-align: center;
     width: 3.6rem;
 
+    &:hover {
+      background-color: #f2fcff;
+      border: solid 1px #2196f3;
+    }
+
     &_left {
       border-radius: .4rem 0 0 .4rem;
       border-right-style: none;
 
       &::before {
         content: "RUB";
-      }
-
-      &:hover {
-        @include hover-item;
       }
 
       &:hover ~ .filter-block__currency-item_center {
@@ -58,10 +60,6 @@
         margin-top: 10px;
       }
 
-      &:hover {
-        @include hover-item;
-      }
-
       &:hover ~ .filter-block__currency-item_right {
         border-left-style: none;
       }
@@ -72,10 +70,6 @@
 
       &::before {
         content: "EUR";
-      }
-
-      &:hover {
-        @include hover-item;
       }
     }
   }

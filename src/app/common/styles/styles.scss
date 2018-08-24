@@ -35,19 +35,6 @@ p {
   display: -webkit-flex;
 }
 
-@mixin hover-item {
-  background-color: #f2fcff;
-  border: solid 1px #2196f3;
-}
-
-@mixin cheked-item {
-  background-color: #2196f3;
-  color: #ffffff;
-}
-
-// @import "app.component";
-// @import "filter.component";
-// @import "ticket.component";
 @import "~src/app/common/styles/app.component";
 @import "~src/app/common/styles/filter.component";
 @import "~src/app/common/styles/ticket.component";

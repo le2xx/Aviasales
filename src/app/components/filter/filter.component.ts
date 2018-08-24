@@ -15,7 +15,7 @@ export class FilterComponent implements OnInit {
     eur: {symbol: '€', status: false, date: null}
   };
 
-  filterStatus: object = {
+  filterStatus = {
     all: {status: false, filterColl: item => item, data: []},
     no: {status: false, filterColl: item => item.stops === 0, data: []},
     one: {status: false, filterColl: item => item.stops === 1, data: []},
@@ -23,8 +23,8 @@ export class FilterComponent implements OnInit {
     tree: {status: false, filterColl: item => item.stops === 3, data: []}
   };
 
-  noFilterData: any;
-  @Input() data: any;
+  noFilterData: any[] = null;
+  @Input() data: any[] = null;
   @Output() filteredData = new EventEmitter<any>();
   @Output() currency = new EventEmitter<any>();
 
@@ -40,7 +40,7 @@ export class FilterComponent implements OnInit {
     this.http.get(this.urlCurrency).subscribe(date => this.addCurrencyStatus(date));
   }
 
-  addCurrencyStatus(date) {
+  addCurrencyStatus(date: any) {
     this.currencyStatus.usd.date = date['Valute'].USD.Value;
     this.currencyStatus.eur.date = date['Valute'].EUR.Value;
   }
