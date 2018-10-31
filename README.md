@@ -12,6 +12,7 @@
 ```bash
 git clone https://github.com/le2xx/Aviasales.git
 cd Aviasales
+npm install -g @angular/cli
 npm i
 ng serve
 http://localhost:4200/
