@@ -1,30 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-// @ts-ignore
-import json from './common/json/tickets.json';
+import {Component} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Tickets} from 'src/app/common/interfaces/tickets';
+import {Ticket} from 'src/app/common/interfaces/ticket';
+import {CurrencyStatus} from 'src/app/common/interfaces/currency-status';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  tickets: any[] = json.tickets.slice();
-  data: object = null;
-  currency: object = {symbol: '₽', status: true, date: 1};
+export class AppComponent {
+  data: Ticket[] = [];
+  currency: CurrencyStatus = {symbol: '₽', status: true, date: 1};
 
-  ngOnInit() {
-    this.dataInit();
-  }
-
-  filteredData(newData: object) {
+  filteredData(newData: Ticket[]) {
     this.data = newData;
   }
 
-  newCurrencyData(newCurrency: object) {
+  newCurrencyData(newCurrency: CurrencyStatus) {
     this.currency = newCurrency;
-  }
-
-  dataInit() {
-    this.data = this.tickets.sort((a, b) => a.price - b.price);
   }
 }

@@ -1,13 +1,18 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {CurrencyStatus} from 'src/app/common/interfaces/currency-status';
+import {Ticket} from 'src/app/common/interfaces/ticket';
+import {Tickets} from '../../common/interfaces/tickets';
+import {Valutes} from '../../common/interfaces/valutes';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent {
   urlCurrency = 'https://www.cbr-xml-daily.ru/daily_json.js';
+  urlJsonFile = 'src/app/common/json/tickets.json';
 
   currencyStatus = {
     rub: {symbol: '₽', status: true, date: 1},
@@ -16,37 +21,29 @@ export class FilterComponent implements OnInit {
   };
 
   filterStatus = {
-    all: {status: false, filterColl: item => item, data: []},
-    no: {status: false, filterColl: item => item.stops === 0, data: []},
-    one: {status: false, filterColl: item => item.stops === 1, data: []},
-    two: {status: false, filterColl: item => item.stops === 2, data: []},
-    tree: {status: false, filterColl: item => item.stops === 3, data: []}
+    all: {status: true, filterCallBack: item => item},
+    no: {status: true, filterCallBack: item => item.stops === 0},
+    one: {status: true, filterCallBack: item => item.stops === 1},
+    two: {status: true, filterCallBack: item => item.stops === 2},
+    tree: {status: true, filterCallBack: item => item.stops === 3}
   };
 
-  noFilterData: any[] = null;
-  @Input() data: any[] = null;
-  @Output() filteredData = new EventEmitter<any>();
-  @Output() currency = new EventEmitter<any>();
+  data: Ticket[] = [];
+  @Output() filteredData = new EventEmitter<Ticket[]>();
+  @Output() currency = new EventEmitter<CurrencyStatus>();
 
-  constructor(private http: HttpClient) {
+  constructor(private currencyApi: HttpClient, private jsonFileApi: HttpClient) {
+    this.currencyApi.get(this.urlCurrency).subscribe((date: Valutes) => this.addCurrencyStatus(date));
+
+    this.jsonFileApi.get(this.urlJsonFile).subscribe((date: Tickets) => {
+      this.data = date.tickets.sort((a, b) => a.price - b.price);
+      this.filteredData.emit(this.data);
+    });
   }
 
-  ngOnInit() {
-    this.noModifiedData();
-    this.getCurrencyData();
-  }
-
-  getCurrencyData() {
-    this.http.get(this.urlCurrency).subscribe(date => this.addCurrencyStatus(date));
-  }
-
-  addCurrencyStatus(date: any) {
-    this.currencyStatus.usd.date = date['Valute'].USD.Value;
-    this.currencyStatus.eur.date = date['Valute'].EUR.Value;
-  }
-
-  noModifiedData() {
-    this.noFilterData = this.data.slice();
+  addCurrencyStatus(date: Valutes) {
+    this.currencyStatus.usd.date = date.Valute.USD.Value;
+    this.currencyStatus.eur.date = date.Valute.EUR.Value;
   }
 
   checkCurrency(currency: string) {
@@ -72,26 +69,38 @@ export class FilterComponent implements OnInit {
   }
 
   filterStops(stop: string) {
-    let result: any;
+    let result = [];
+
+    const filterSelect = (select: string) => {
+      return this.filterStatus[select].status;
+    };
+
+    const filterData = (select: string) => {
+      const callBack = this.filterStatus[select].filterCallBack;
+      return this.data.filter(callBack);
+    };
+
+    if (stop === 'all') {
+      this.filterStatus.all.status = !this.filterStatus.all.status;
+      this.filterStatus.no.status = this.filterStatus.all.status;
+      this.filterStatus.one.status = this.filterStatus.all.status;
+      this.filterStatus.two.status = this.filterStatus.all.status;
+      this.filterStatus.tree.status = this.filterStatus.all.status;
+
+      this.filterStatus.all.status ? result = this.data : result = [];
+
+      return this.filteredData.emit(result);
+    }
+
     this.filterStatus[stop].status = !this.filterStatus[stop].status;
 
-    if (this.filterStatus[stop].status) {
-      this.filterStatus[stop].data = this.noFilterData.filter(this.filterStatus[stop].filterColl);
-    } else {
-      this.filterStatus[stop].data = [];
-    }
+    result = [].concat(
+      filterSelect('no') ? filterData('no') : [],
+      filterSelect('one') ? filterData('one') : [],
+      filterSelect('two') ? filterData('two') : [],
+      filterSelect('tree') ? filterData('tree') : []
+    );
 
-    if (this.filterStatus['all'].status) {
-      return this.filteredData.emit(this.noFilterData);
-    }
-
-    result = [].concat(this.filterStatus['all'].data, this.filterStatus['no'].data, this.filterStatus['one'].data,
-      this.filterStatus['two'].data, this.filterStatus['tree'].data);
-
-    if (result.length === 0) {
-      result = this.noFilterData;
-    }
-
-    this.filteredData.emit(result.sort((a, b) => a.price - b.price));
+    return this.filteredData.emit(result.sort((a, b) => a.price - b.price));
   }
 }

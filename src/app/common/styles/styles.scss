@@ -35,6 +35,6 @@ p {
   display: -webkit-flex;
 }
 
-@import "~src/app/common/styles/app.component";
-@import "~src/app/common/styles/filter.component";
-@import "~src/app/common/styles/ticket.component";
+@import "app.component";
+@import "filter.component";
+@import "ticket.component";

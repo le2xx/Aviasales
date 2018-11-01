@@ -8,7 +8,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {DateTransformPipe} from './common/pipes/date-transform.pipe';
 import {PriceTransformPipe} from './common/pipes/price-transform.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +18,7 @@ import {PriceTransformPipe} from './common/pipes/price-transform.pipe';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
